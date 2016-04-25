@@ -1,7 +1,7 @@
 {
-  "name": "Chart",
+  "name": "react-native-chart",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start"
   },
@@ -9,5 +9,23 @@
     "react": "^0.14.8",
     "react-native": "^0.24.01",
     "react-native-svg": "^1.1.0"
-  }
+  },
+  "description": "react-native-chart is built to provide a chart to react native on both iOS and Android",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonelpaulino/react-native-chart.git"
+  },
+  "keywords": [
+    "chart",
+    "react-native-ios",
+    "react-native-android",
+    "react-native",
+    "react-native-chart"
+  ],
+  "author": "Leonel Paulino <leonelpaulino18@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leonelpaulino/react-native-chart/issues"
+  },
+  "homepage": "https://github.com/leonelpaulino/react-native-chart#readme"
 }
