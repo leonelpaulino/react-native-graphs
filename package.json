@@ -1,6 +1,6 @@
 {
   "name": "react-native-graphs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "react-native-graphs is built to provide a chart to react native on both iOS and Android",
   "scripts": {
     "postinstall": "rnpm link react-native-svg"
