@@ -88,5 +88,5 @@ onClick         | null       | This function is call everytime the user clicks o
 
 
 #### TODO:
-1. Create chart with no border
+1. Create chart without borders
 2. Display xText
