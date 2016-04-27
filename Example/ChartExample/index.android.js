@@ -11,32 +11,34 @@ import React, {
   View
 } from 'react-native';
 
-import Dimensions from 'Dimensions';
+
+import Chart from 'react-native-graphs';
 class ChartExample extends Component {
 constructor(){
   super();
   this.state = {
-    touch:'none'
+    touch:'none',
+    selected: 0
   }
 }
   render() {
     return (   
     <View style = {{ flex:1}}>
-       <RCTChart 
-            points={[{x:75,y:150,id:0},{x:150,y:300},{x:225,y:296},{x:500,y:296},{x:600,y:100}]} 
+        <Chart 
+            points={[{x:75,y:150,id:0},{x:150,y:300,id:1},{x:225,y:296,id:2},{x:500,y:296,id:3}]} 
             border = {true} 
             radius = {10}
             borderWidth = {4}
             lineWidth = {3}
-            borderColor = '#E1E2E2'
+            borderColor = 'black'
             selectedColor = 'blue'
             backgroundColor = 'white'
-            selectedPoint = {3}
+            selectedPoint = {this.state.selected}
             height = {450}
-            width = {600}
+            width = {400}
             yValues = {[400,200]}
             yText = ""
-            textColor = "#E1E2E2"
+            textColor = "black"
             onClick = {this.pointClick.bind(this)}
             />
             <Text>
@@ -47,7 +49,7 @@ constructor(){
     );
   }
   pointClick(obj){
-    console.log(obj);
+    this.setState({touch:"x:"+obj.x+" y:"+obj.y, selected:obj.id});
   }
 }
  
