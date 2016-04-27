@@ -70,19 +70,19 @@ constructor(){
 Name            | Default    | Description
 ----------------|------------|--------------
 points          |   null     | The points props specifies the coordinates to be display
-border          | true       | This prop specifies if the chart will have border
+border          | true       | This prop specifies if the chart will have border.TODO
 borderColor     | 'black'    | The borderColor specifies the color of the border
 lineWidth       |     1      | the lineWidth specifies the distance between the border lines
 selectedPoint   |   0        | selectedPoint specifies the index of the point that will be selected by default
 selectedColor   |   'black   | selectedColor specifies the color of the point selected.
 backgroundColor | 'white'    | The backgroundColor specifies the background color of the chart.
 radius          |   5        | The radius specifies the radius of each point on the chart.
-height          |Height/2    | The height specifies the height of the chart. the default value is the height of the screen divide by 2
-width           | Width/2    | The width specifies the width of the chart. the default value is the width of the screen divide by 2.
+height          |  300       | The height specifies the height of the chart.
+width           | 300        | The width specifies the width of the chart.
 xText           | ''         | The xText specifies the text that will appear on each value of the X axis
 yText           | ''         | The yText specifies the text that will appear on each value of the y axis
 yValues         | 1          | The value of y that will appear on the chart 
-xValues         | null       | The value of x that will appear on the chart 
+xValues         | null       | The value of x that will appear on the chart. TODO.
 textColor       | 'black'    | the color of the text that will appear on the chart
 onClick         | null       | This function is call everytime the user clicks on a point.
 
