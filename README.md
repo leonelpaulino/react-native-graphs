@@ -12,7 +12,9 @@
 
 #### Install
 
-TODO
+npm install react-native-graphs
+
+rnpm link react-native-svg 
 
 #### Usage
 
@@ -86,5 +88,5 @@ onClick         | null       | This function is call everytime the user clicks o
 
 
 #### TODO:
-1. create chart with no border
-2. display xText
+1. Create chart with no border
+2. Display xText
