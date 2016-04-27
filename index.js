@@ -1,6 +1,6 @@
 
 import React, {
-    Component
+    Component,
 } from 'react-native';
 import Chart from './RCTChart/Component';
 export default Chart;

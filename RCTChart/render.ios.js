@@ -5,7 +5,6 @@ import React, {
   TouchableWithoutFeedback,
 } from 'react-native';
 
-import Dimensions from 'Dimensions';
 var render = {
 //El -20 en el Text es para hacer que el texto aparesca encima de la linea.
 // se multiplica por -1 en el Text porque en ios el punto 0,0 del texto estan en la parte de abajo de la pantalla
@@ -21,7 +20,7 @@ var render = {
           			showsHorizontalScrollIndicator = {false}
           			showsVerticalScrollIndicator = {false}
           			bounces = {false}
-          			style={{height:this.props.height,width:Dimensions.get('window').width}}>
+          			style={{height:this.props.height,width:this.width}}>
           			<View>
   					<TouchableWithoutFeedback onPress = {this.onClick.bind(this)}>
   					<View>

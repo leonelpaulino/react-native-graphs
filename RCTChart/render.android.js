@@ -6,13 +6,12 @@ import React, {
 } from 'react-native';
 
 
-import Dimensions from 'Dimensions';
 
 var render = {
-	render(){
+  render(){
   //El -20 en el Text es para hacer que el texto aparesca encima de la linea.
-		return ( 
-			<View style={{backgroundColor: this.props.backgroundColor, height: this.props.height, width:this.props.width}}>
+    return ( 
+      <View style={{backgroundColor: this.props.backgroundColor, height: this.props.height, width:this.props.width}}>
         {this.props.yValues.map((obj,index)=>{
             return (<Text 
                     key = {index} 
@@ -33,13 +32,13 @@ var render = {
             color:this.props.textColor}}>
             {"0 "+this.props.yText}
           </Text>
-				<ScrollView
+        <ScrollView
           ref='scrollView'
           onScroll = {this.onScroll}
-    			horizontal={true}
-    			showsHorizontalScrollIndicator = {false}
-    			showsVerticalScrollIndicator = {false}
-    			style={{position:'absolute',height:this.props.height,width:Dimensions.get('window').width}}>
+          horizontal={true}
+          showsHorizontalScrollIndicator = {false}
+          showsVerticalScrollIndicator = {false}
+          style={{position:'absolute',height:this.props.height,width:this.width}}>
           <TouchableNativeFeedback 
           onPress = {this.onClick.bind(this)}
           background={TouchableNativeFeedback.SelectableBackground()}>
@@ -47,9 +46,9 @@ var render = {
                 {this.getChart()}
               </View>
           </TouchableNativeFeedback>
-				</ScrollView>
-				</View>
-				);
-	}
+        </ScrollView>
+        </View>
+        );
+  }
 };
 module.exports = render;

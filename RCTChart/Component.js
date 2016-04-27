@@ -3,7 +3,6 @@
 
 import Render from './render';
 
-import Dimensions from 'Dimensions';
 
 import Svg, {
   Line,
@@ -16,7 +15,8 @@ import React, {
   Component,
   PropTypes,
   View,
-  TouchableHighlight
+  TouchableHighlight,
+  Dimensions
 } from 'react-native';
 
 
@@ -48,14 +48,15 @@ class Chart extends Component {
     yText: '',
     xText: '',
     radius : 5,
-    width: Dimensions.get('window').width/2,
-    height: Dimensions.get('window').height/2,
+    width: 300,
+    height: 300,
     textColor:'black'
   }
-
-
+  maxX = 0;
+  width = 0;
   constructor(){
     super();
+
   }
 
 
@@ -67,7 +68,7 @@ class Chart extends Component {
     return ( 
           <Svg
             height ={this.props.height}
-            width ={this.props.width}>
+            width  ={this.maxX}>
 
             {this.drawYAxisLine()}
 
@@ -98,17 +99,33 @@ class Chart extends Component {
     * Scrolls to the selected point on the pass on the prop.
     */
     scrollTo(){
-      var displayWidth = Dimensions.get('window').width;
-      var x = this.props.points[this.props.selectedPoint].x-displayWidth+this.props.radius;
+
+      var x = this.props.points[this.props.selectedPoint].x-this.width+ this.props.radius;
       setTimeout(()=>{this.refs.scrollView.scrollTo({x: x < 0? 0: x})},0);
     }
 
-
+    componentWillMount(){
+    this.maxX = this.getMaxX()+50;
+    this.width = this.props.width < Dimensions.get('window').width ? 
+                              this.props.width:Dimensions.get('window').width;
+    }
     componentDidMount(){
+      
       this.scrollTo();
     }
 
-
+    /*
+    * returns the max value of the X Axis
+    */
+    getMaxX(){
+      var points = this.props.points;
+      var max  = 0 ;
+      for(var i = 0 ; i < points.length; i++){
+          if (max < points[i].x)
+              max = points[i].x;
+      }
+      return max;
+    }
     /*
     * It calls the function that is hook 
     * to the component when a point is touch
@@ -172,9 +189,9 @@ class Chart extends Component {
                   return(<Path
                           key = {index}
                           strokeDasharray="4,4" 
-                          d={"M0  "+(this.props.height-obj)+"h"+this.props.width} />);
+                          d={"M0  "+(this.props.height-obj)+"h"+this.maxX} />);
                           })}
-                <Path d={"M0  "+(this.props.height)+"h"+this.props.width}/>
+                <Path d={"M0  "+(this.props.height)+"h"+this.maxX}/>
               </G>);
     }
 
