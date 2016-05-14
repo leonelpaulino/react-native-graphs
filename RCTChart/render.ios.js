@@ -8,7 +8,7 @@ import React, {
 var render = {
 //El -20 en el Text es para hacer que el texto aparesca encima de la linea.
 // se multiplica por -1 en el Text porque en ios el punto 0,0 del texto estan en la parte de abajo de la pantalla
-	render(){
+	render(chart){
 		
 		return ( 
 			<View style={{backgroundColor: this.props.backgroundColor,
@@ -24,7 +24,7 @@ var render = {
           			<View>
   					<TouchableWithoutFeedback onPress = {this.onClick.bind(this)}>
   					<View>
-  						{this.getChart()}
+  						{chart}
   					</View>
   					</TouchableWithoutFeedback>
   					

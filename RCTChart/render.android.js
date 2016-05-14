@@ -8,7 +8,7 @@ import React, {
 
 
 var render = {
-  render(){
+  render(chart){
   //El -20 en el Text es para hacer que el texto aparesca encima de la linea.
     return ( 
       <View style={{backgroundColor: this.props.backgroundColor, height: this.props.height, width:this.props.width}}>
@@ -43,7 +43,7 @@ var render = {
           onPress = {this.onClick.bind(this)}
           background={TouchableNativeFeedback.SelectableBackground()}>
               <View>
-                {this.getChart()}
+                {chart}
               </View>
           </TouchableNativeFeedback>
         </ScrollView>

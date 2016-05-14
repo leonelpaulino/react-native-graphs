@@ -24,7 +24,7 @@ class Chart extends Component {
   static propTypes = {
     points: PropTypes.arrayOf({x:0,y:0}).isRequired,
     border:PropTypes.bool,
-    borderColor: PropTypes.string,
+    color: PropTypes.string,
     lineWidth : PropTypes.number,
     selectedColor: PropTypes.string,
     selectedPoint: PropTypes.number,
@@ -41,13 +41,15 @@ class Chart extends Component {
   };
   static defaultProps = {
     border : true,
-    borderColor : 'black',
+    color : 'black',
     selectedColor : 'red',
     selectedPoint : 0,
     backgroundColor : 'white',
     yText: '',
     xText: '',
     radius : 5,
+    lineWidth:3,
+    borderWidth:4,
     width: 300,
     height: 300,
     textColor:'black'
@@ -58,12 +60,10 @@ class Chart extends Component {
     super();
 
   }
-
-
   /*
   * return the chart.
   */
-  getChart(){
+  getBorderChart(){
     var linePoints = this.getLinePoints();
     return ( 
           <Svg
@@ -85,13 +85,29 @@ class Chart extends Component {
             {this.drawPoint()}
       </Svg>);
   }
+  getChart(){
+    var linePoints = this.getLinePoints();
+    return ( 
+          <Svg
+            height ={this.props.height}
+            width  ={this.maxX}>
+
+            {this.drawYAxisLine()}
+
+            {this.drawLine(linePoints)}
+
+            {this.drawPoint()}
+      </Svg>);
+
+  }
 
 
     /* 
     * Renders the component
     */
     render() {
-      return Render.render.bind(this)();
+      var chart = this.props.border? this.getBorderChart(): this.getChart();
+      return Render.render.bind(this)(chart);
     }
 
 
@@ -184,7 +200,7 @@ class Chart extends Component {
     */
     drawYAxisLine(){
       return (
-        <G fill="none" stroke={this.props.borderColor} strokeWidth="1">
+        <G fill="none" stroke={this.props.color} strokeWidth="1">
                 { this.props.yValues.map((obj,index)=>{
                   return(<Path
                           key = {index}
@@ -208,7 +224,7 @@ class Chart extends Component {
           cy = {this.props.height-point.y}
           r = {this.props.radius+3} 
           fill = {'transparent'}
-          stroke = {this.props.borderColor}
+          stroke = {this.props.color}
           strokeWidth = {this.props.borderWidth-1}/>);
         }));
     }
@@ -227,7 +243,7 @@ class Chart extends Component {
                     y1={this.props.height-point[2].y1}
                     x2={point[2].x2}
                     y2={this.props.height-point[2].y2}
-                    stroke= {this.props.borderColor}
+                    stroke= {this.props.color}
                     strokeWidth={this.props.borderWidth}/>);
           })
         );
@@ -247,7 +263,7 @@ class Chart extends Component {
                           y1={this.props.height-point[1].y1}
                           x2={point[1].x2}
                           y2={this.props.height-point[1].y2}
-                          stroke= {this.props.borderColor}
+                          stroke= {this.props.color}
                           strokeWidth={this.props.borderWidth}/>);
                 })
           );
@@ -258,6 +274,7 @@ class Chart extends Component {
     *  returns the lines that goes from one point to another.
     */
     drawLine(linePoints){
+    var color = this.props.border? this.props.backgroundColor: this.props.color;
       return (
         linePoints.map((point,index)=>{
                 return(
@@ -267,7 +284,7 @@ class Chart extends Component {
                           y1={this.props.height-point[0].y1}
                           x2={point[0].x2}
                           y2={this.props.height-point[0].y2}
-                          stroke= {this.props.backgroundColor}
+                          stroke= {color}
                           strokeWidth= {this.props.lineWidth}/>);
                 })
         );
@@ -298,7 +315,7 @@ class Chart extends Component {
     drawPoint(){
         return (
             this.props.points.map((point,index)=>{
-                var color = index == this.props.selectedPoint? this.props.selectedColor: this.props.borderColor;
+                var color = index == this.props.selectedPoint? this.props.selectedColor: this.props.color;
                 return (
                     <Circle
                       key = {index}
