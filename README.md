@@ -70,9 +70,10 @@ constructor(){
 Name            | Default    | Description
 ----------------|------------|--------------
 points          |   null     | The points props specifies the coordinates to be display
-border          | true       | This prop specifies if the chart will have border.TODO
-borderColor     | 'black'    | The borderColor specifies the color of the border
-lineWidth       |     1      | the lineWidth specifies the distance between the border lines
+border          | true       | This prop specifies if the chart will have border.
+color           | 'black'    | color specifies the color of the chart.
+lineWidth       |     3      | the lineWidth specifies the distance between the border lines
+borderWidth     |     4      | The borderWidth specifies the strokeWidth of the border lines.
 selectedPoint   |   0        | selectedPoint specifies the index of the point that will be selected by default
 selectedColor   |   'black   | selectedColor specifies the color of the point selected.
 backgroundColor | 'white'    | The backgroundColor specifies the background color of the chart.
@@ -88,5 +89,5 @@ onClick         | null       | This function is call everytime the user clicks o
 
 
 #### TODO:
-1. Create chart without borders
+1. ~~Create chart without borders~~ 
 2. Display xText
